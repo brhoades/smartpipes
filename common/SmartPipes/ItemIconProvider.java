@@ -10,25 +10,25 @@ public class ItemIconProvider implements IIconProvider
 {
   public static enum Items
   {
-    PipeSmartBasic(0, "buildcraft:pipeItemsGold"),
-    PipeSmartCap(1, "buildcraft:pipeItemsGold"),
-    MAX(2, "");
+    PipeSmartBasic( 0, "buildcraft:pipeItemsGold" ),
+    PipeSmartCap( 1, "buildcraft:pipeItemsGold" ),
+    MAX( 2, "" );
 
     private int index;
     private String file;
 
-    private Items( int index, String file)
+    private Items( int index, String file )
     {
       this.index = index;
       this.file = file;
     }
 
-    public int i( )
+    public int i()
     {
       return this.index;
     }
 
-    public String icon( )
+    public String icon()
     {
       return this.file;
     }
@@ -48,14 +48,16 @@ public class ItemIconProvider implements IIconProvider
   @SideOnly(Side.CLIENT)
   public void registerIcons( IconRegister iconRegister )
   {
-    _icons = new Icon[Items.MAX.i( )];
+    _icons = new Icon[Items.MAX.i()];
 
-    for( Items item: Items.values() )
+    for( Items item : Items.values() )
     {
-      if( item.i( ) == Items.MAX.i( ) )
+      if( item.i() == Items.MAX.i() )
+      {
         continue;
+      }
 
-      _icons[item.i( )] = iconRegister.registerIcon(item.icon( ));
+      _icons[item.i()] = iconRegister.registerIcon( item.icon() );
     }
   }
 

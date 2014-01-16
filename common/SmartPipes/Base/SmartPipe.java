@@ -29,7 +29,7 @@ public class SmartPipe extends Pipe
   @Override
   public int getIconIndex( ForgeDirection direction )
   {
-    return ItemIconProvider.Items.PipeSmartBasic.i( );
+    return ItemIconProvider.Items.PipeSmartBasic.i();
   }
 
   public void eventHandler( PipeEventItem.AdjustSpeed event )
