@@ -2,11 +2,13 @@ package SmartPipes;
 
 import SmartPipes.Base.SmartPipe;
 import SmartPipes.blocks.BlockRecipeEncoder;
+import SmartPipes.gui.GuiHandler;
 import buildcraft.BuildCraftCore;
 import buildcraft.transport.blueprints.BptItemPipeEmerald;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import net.minecraft.block.Block;
@@ -48,6 +50,8 @@ public class SmartPipes
     LanguageRegistry.addName( blockRecipeEncoder, "Recipe Encoder" );
 
     BuildCraftCore.itemBptProps[SmartPipeBaseID] = new BptItemPipeEmerald();
+
+    NetworkRegistry.instance().registerGuiHandler( this, new GuiHandler() );
   }
 
   @ForgeSubscribe
