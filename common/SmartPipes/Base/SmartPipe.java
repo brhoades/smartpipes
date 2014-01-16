@@ -23,13 +23,13 @@ public class SmartPipe extends Pipe
   @SideOnly(Side.CLIENT)
   public IIconProvider getIconProvider()
   {
-    return new ItemIconProvider( );
+    return SmartPipes.SmartPipes.instance.itemIconProvider;
   }
 
   @Override
   public int getIconIndex( ForgeDirection direction )
   {
-    return ItemIconProvider.Items.PipeSmartBasic.index;
+    return ItemIconProvider.Items.PipeSmartBasic.i( );
   }
 
   public void eventHandler( PipeEventItem.AdjustSpeed event )

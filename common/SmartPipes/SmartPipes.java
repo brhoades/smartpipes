@@ -21,7 +21,10 @@ public class SmartPipes
 {
   public static final String modid = "SmartPipes";
 
-  public ItemIconProvider ItemIconProvider = new ItemIconProvider();
+  public ItemIconProvider itemIconProvider = new ItemIconProvider();
+
+  @Mod.Instance(modid)
+  public static SmartPipes instance;
 
   public static Item SmartPipeBase;
   public static int SmartPipeBaseID = 500;
@@ -42,7 +45,7 @@ public class SmartPipes
   {
     if (event.map.textureType == 1)
     {
-      ItemIconProvider.registerIcons(event.map);
+      itemIconProvider.registerIcons( event.map );
     }
   }
 }
