@@ -9,7 +9,11 @@ import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import net.minecraft.block.Block;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.item.Item;
+import net.minecraftforge.client.event.TextureStitchEvent;
+import net.minecraftforge.event.ForgeSubscribe;
 
 import static buildcraft.BuildCraftTransport.buildPipe;
 
@@ -19,6 +23,8 @@ import static buildcraft.BuildCraftTransport.buildPipe;
 public class SmartPipes
 {
   public static final String modid = "SmartPipes";
+
+  public ItemIconProvider ItemIconProvider = new ItemIconProvider();
 
   public static Item SmartPipeBase;
   public static int SmartPipeBaseID = 500;
@@ -37,8 +43,16 @@ public class SmartPipes
         LanguageRegistry.addName(blockRecipeEncoder, "Recipe Encoder");
 
         BuildCraftCore.itemBptProps[SmartPipeBaseID] = new BptItemPipeEmerald();
-
     }
 
+  @ForgeSubscribe
+  @SideOnly(Side.CLIENT)
+  public void textureHook(TextureStitchEvent.Pre event)
+  {
+    if (event.map.textureType == 1)
+    {
+      ItemIconProvider.registerIcons(event.map);
+    }
+  }
 }
 
