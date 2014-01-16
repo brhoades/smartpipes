@@ -1,9 +1,12 @@
 package SmartPipes.Base;
 
-import buildcraft.BuildCraftTransport;
+import SmartPipes.ItemIconProvider;
 import buildcraft.api.core.IIconProvider;
 import buildcraft.core.utils.MathUtils;
-import buildcraft.transport.*;
+import buildcraft.transport.Pipe;
+import buildcraft.transport.PipeTransportItems;
+import buildcraft.transport.TransportConstants;
+import buildcraft.transport.TravelingItem;
 import buildcraft.transport.pipes.events.PipeEventItem;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -20,13 +23,13 @@ public class SmartPipe extends Pipe
   @SideOnly(Side.CLIENT)
   public IIconProvider getIconProvider()
   {
-    return BuildCraftTransport.instance.pipeIconProvider;
+    return SmartPipes.SmartPipes.instance.itemIconProvider;
   }
 
   @Override
   public int getIconIndex( ForgeDirection direction )
   {
-    return PipeIconProvider.TYPE.PipeItemsGold.ordinal();
+    return ItemIconProvider.Items.PipeSmartBasic.i( );
   }
 
   public void eventHandler( PipeEventItem.AdjustSpeed event )

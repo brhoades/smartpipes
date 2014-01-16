@@ -1,17 +1,13 @@
 package SmartPipes;
 
 import SmartPipes.Base.SmartPipe;
-import SmartPipes.blocks.BlockRecipeEncoder;
 import buildcraft.BuildCraftCore;
 import buildcraft.transport.blueprints.BptItemPipeEmerald;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.LanguageRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
-
 
 import static buildcraft.BuildCraftTransport.buildPipe;
 
@@ -25,22 +21,15 @@ public class SmartPipes
   public static Item SmartPipeBase;
   public static int SmartPipeBaseID = 500;
 
-  public static Block blockRecipeEncoder;
+  @Mod.EventHandler
+  public void preInitialize( FMLPreInitializationEvent event )
+  {
+    SmartPipeBase = buildPipe(SmartPipeBaseID, SmartPipe.class, "Base Smart Pipe", Item.ingotGold, Block.glass, Item.ingotIron );
+    SmartPipeBase.setTextureName("buildcraft:textures/blocks/pipeItemsGold.png");
+    SmartPipeBase.setUnlocalizedName( "Base Smart Pipe" );
 
-    @Mod.EventHandler
-    public void preInitialize( FMLPreInitializationEvent event )
-    {
-        SmartPipeBase = buildPipe(SmartPipeBaseID, SmartPipe.class, "Base Smart Pipe" );
-        SmartPipeBase.setTextureName("buildcraft:textures/blocks/pipeItemsGold.png");
-        SmartPipeBase.setUnlocalizedName( "Base Smart Pipe" );
-
-        blockRecipeEncoder = new BlockRecipeEncoder(1337);
-        GameRegistry.registerBlock(blockRecipeEncoder, "blockRecipeEncoder");
-        LanguageRegistry.addName(blockRecipeEncoder, "Recipe Encoder");
-
-        BuildCraftCore.itemBptProps[SmartPipeBaseID] = new BptItemPipeEmerald();
-
-    }
+    BuildCraftCore.itemBptProps[SmartPipeBaseID] = new BptItemPipeEmerald();
+  }
 
 }
 

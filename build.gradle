@@ -25,6 +25,17 @@ minecraft {
 	version = "1.6.4-9.11.1.964"
 }
 
+sourceSets {
+    main {
+        java {
+            srcDir 'src/common'
+        }
+        resources {
+            srcDir 'src/resources'
+        }
+    }
+}
+
 processResources
 {
     // replace stuff in mcmod.info, nothing else
