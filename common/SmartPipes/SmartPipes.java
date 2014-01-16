@@ -6,8 +6,11 @@ import buildcraft.transport.blueprints.BptItemPipeEmerald;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
-import net.minecraft.block.Block;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.item.Item;
+import net.minecraftforge.client.event.TextureStitchEvent;
+import net.minecraftforge.event.ForgeSubscribe;
 
 import static buildcraft.BuildCraftTransport.buildPipe;
 
@@ -18,18 +21,29 @@ public class SmartPipes
 {
   public static final String modid = "SmartPipes";
 
+  public ItemIconProvider ItemIconProvider = new ItemIconProvider();
+
   public static Item SmartPipeBase;
   public static int SmartPipeBaseID = 500;
 
   @Mod.EventHandler
   public void preInitialize( FMLPreInitializationEvent event )
   {
-    SmartPipeBase = buildPipe(SmartPipeBaseID, SmartPipe.class, "Base Smart Pipe", Item.ingotGold, Block.glass, Item.ingotIron );
+    SmartPipeBase = buildPipe(SmartPipeBaseID, SmartPipe.class, "Base Smart Pipe" );
     SmartPipeBase.setTextureName("buildcraft:textures/blocks/pipeItemsGold.png");
     SmartPipeBase.setUnlocalizedName( "Base Smart Pipe" );
 
     BuildCraftCore.itemBptProps[SmartPipeBaseID] = new BptItemPipeEmerald();
   }
 
+  @ForgeSubscribe
+  @SideOnly(Side.CLIENT)
+  public void textureHook(TextureStitchEvent.Pre event)
+  {
+    if (event.map.textureType == 1)
+    {
+      ItemIconProvider.registerIcons(event.map);
+    }
+  }
 }
 
