@@ -51,7 +51,8 @@ public class SmartPipe extends Pipe
     {
       return false;
     }
-    entityplayer.openGui( SmartPipesBase.instance, 0, entityplayer.getEntityWorld(), (int) entityplayer.posX, (int) entityplayer.posY, (int) entityplayer.posZ );
+    entityplayer.openGui( SmartPipesBase.instance, 0, entityplayer.getEntityWorld(), (int) entityplayer.posX,
+                          (int) entityplayer.posY, (int) entityplayer.posZ );
     return true;
   }
 

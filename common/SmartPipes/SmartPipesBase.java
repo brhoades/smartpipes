@@ -3,6 +3,7 @@ package SmartPipes;
 import SmartPipes.Base.SmartPipe;
 import SmartPipes.blocks.BlockRecipeEncoder;
 import SmartPipes.gui.GuiHandler;
+import SmartPipes.network.PacketHandler;
 import buildcraft.BuildCraftCore;
 import buildcraft.core.utils.Localization;
 import buildcraft.transport.blueprints.BptItemPipeEmerald;
@@ -25,7 +26,8 @@ import static buildcraft.BuildCraftTransport.buildPipe;
 
 @Mod(modid = SmartPipesBase.modid, name = "Smart Pipes", version = "0.0.1a",
      dependencies = "required-after:Forge@7.7.2.964,);required-after:BuildCraft|Transport;required-after:BuildCraft|Energy")
-@NetworkMod(clientSideRequired = true, serverSideRequired = true)
+@NetworkMod(clientSideRequired=true, serverSideRequired=false,
+            channels={"GenericRandom"}, packetHandler = PacketHandler.class)
 
 public class SmartPipesBase
 {
