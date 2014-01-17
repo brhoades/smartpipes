@@ -21,7 +21,8 @@ public class GuiSmartPipe extends GuiScreen
   }
 
   @Override
-  public void initGui() {
+  public void initGui()
+  {
     super.initGui();
 
     xPos = ( this.width - xTextureSize ) / 2;
@@ -41,7 +42,7 @@ public class GuiSmartPipe extends GuiScreen
     this.drawTexturedModalRect( xPos, yPos, 0, 0, xTextureSize, yTextureSize );
 
     // Draw buttons
-    super.drawScreen(par1, par2, par3);
+    super.drawScreen( par1, par2, par3 );
   }
 
   public boolean doesGuiPauseGame()
