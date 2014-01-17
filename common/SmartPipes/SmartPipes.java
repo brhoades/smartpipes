@@ -4,21 +4,24 @@ import SmartPipes.Base.SmartPipe;
 import SmartPipes.blocks.BlockRecipeEncoder;
 import SmartPipes.gui.GuiHandler;
 import buildcraft.BuildCraftCore;
+import buildcraft.core.utils.Localization;
 import buildcraft.transport.blueprints.BptItemPipeEmerald;
 import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
-import net.minecraft.block.Block;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.event.ForgeSubscribe;
 
 import static buildcraft.BuildCraftTransport.buildPipe;
+
 
 @Mod(modid = SmartPipes.modid, name = "Smart Pipes", version = "0.0.1a",
      dependencies = "required-after:Forge@7.7.2.964,);required-after:BuildCraft|Transport;required-after:BuildCraft|Energy")
@@ -34,18 +37,17 @@ public class SmartPipes
   public static SmartPipes instance;
 
   public static Item SmartPipeBase;
-  public static int SmartPipeBaseID = 500;
+  public static int SmartPipeBaseID = 3900;
 
   public static Block blockRecipeEncoder;
 
   @Mod.EventHandler
   public void preInitialize( FMLPreInitializationEvent event )
   {
-    SmartPipeBase = buildPipe( SmartPipeBaseID, SmartPipe.class, "Base Smart Pipe" );
+    SmartPipeBase = buildPipe( SmartPipeBaseID, SmartPipe.class, "Smart Pipe" );
     SmartPipeBase.setTextureName( "buildcraft:textures/blocks/pipeItemsGold.png" );
-    SmartPipeBase.setUnlocalizedName( "Base Smart Pipe" );
 
-    blockRecipeEncoder = new BlockRecipeEncoder( 1337 );
+    blockRecipeEncoder = new BlockRecipeEncoder( 3901 );
     GameRegistry.registerBlock( blockRecipeEncoder, "blockRecipeEncoder" );
     LanguageRegistry.addName( blockRecipeEncoder, "Recipe Encoder" );
 
@@ -62,6 +64,12 @@ public class SmartPipes
     {
       itemIconProvider.registerIcons( event.map );
     }
+  }
+
+  @Mod.EventHandler
+  public void load(FMLInitializationEvent evt)
+  {
+    Localization.addLocalization("/lang/smartpipes/", "en_US");
   }
 }
 
