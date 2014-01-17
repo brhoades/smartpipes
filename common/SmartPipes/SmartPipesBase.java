@@ -23,18 +23,18 @@ import net.minecraftforge.event.ForgeSubscribe;
 import static buildcraft.BuildCraftTransport.buildPipe;
 
 
-@Mod(modid = SmartPipes.modid, name = "Smart Pipes", version = "0.0.1a",
+@Mod(modid = SmartPipesBase.modid, name = "Smart Pipes", version = "0.0.1a",
      dependencies = "required-after:Forge@7.7.2.964,);required-after:BuildCraft|Transport;required-after:BuildCraft|Energy")
 @NetworkMod(clientSideRequired = true, serverSideRequired = true)
 
-public class SmartPipes
+public class SmartPipesBase
 {
   public static final String modid = "SmartPipes";
 
   public ItemIconProvider itemIconProvider = new ItemIconProvider();
 
   @Mod.Instance(modid)
-  public static SmartPipes instance;
+  public static SmartPipesBase instance;
 
   public static Item SmartPipeBase;
   public static int SmartPipeBaseID = 3900;

@@ -1,7 +1,7 @@
 package SmartPipes.Base;
 
 import SmartPipes.ItemIconProvider;
-import SmartPipes.SmartPipes;
+import SmartPipes.SmartPipesBase;
 import buildcraft.api.core.IIconProvider;
 import buildcraft.core.utils.MathUtils;
 import buildcraft.transport.Pipe;
@@ -21,11 +21,13 @@ public class SmartPipe extends Pipe
     super( new PipeTransportItems(), itemID );
   }
 
+  public char type;
+
   @Override
   @SideOnly(Side.CLIENT)
   public IIconProvider getIconProvider()
   {
-    return SmartPipes.instance.itemIconProvider;
+    return SmartPipesBase.instance.itemIconProvider;
   }
 
   @Override
@@ -49,8 +51,13 @@ public class SmartPipe extends Pipe
     {
       return false;
     }
-    entityplayer.openGui( SmartPipes.instance, 0, entityplayer.getEntityWorld(), (int) entityplayer.posX, (int) entityplayer.posY, (int) entityplayer.posZ );
+    entityplayer.openGui( SmartPipesBase.instance, 0, entityplayer.getEntityWorld(), (int) entityplayer.posX, (int) entityplayer.posY, (int) entityplayer.posZ );
     return true;
+  }
+
+  public void setType( char type )
+  {
+    this.type = type;
   }
 
 }
