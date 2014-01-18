@@ -16,6 +16,8 @@ import net.minecraftforge.common.ForgeDirection;
 
 public class SmartPipe extends Pipe
 {
+  public static String itemName = "Smart Pipe";
+
   public SmartPipe( int itemID )
   {
     super( new PipeTransportItems(), itemID );
