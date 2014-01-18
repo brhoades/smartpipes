@@ -1,6 +1,6 @@
 package SmartPipes.api;
 
-import SmartPipes.Base.SmartPipe;
+import SmartPipes.Base.BaseSmartPipe;
 import SmartPipes.items.ItemSmartPipe;
 import SmartPipes.misc.CreativeTabSP;
 import buildcraft.core.utils.Localization;
@@ -31,7 +31,7 @@ public class BuildCraftHandle
 
   public void registerPipes( Side side )
   {
-    SmartPipes.SmartPipeBase = buildPipe( SmartPipes.SmartPipeBaseID, SmartPipe.class, "Smart Pipe" );
+    SmartPipes.SmartPipeBase = buildPipe( SmartPipes.SmartPipeBaseID, BaseSmartPipe.class, "Smart Pipe" );
     SmartPipes.SmartPipeBase.setTextureName( "buildcraft:textures/blocks/pipeItemsGold.png" );
 
   }
