@@ -23,6 +23,8 @@ public class SmartPipe extends Pipe
     super( new PipeTransportItems(), itemID );
   }
 
+  public char type;
+
   @Override
   @SideOnly(Side.CLIENT)
   public IIconProvider getIconProvider()
@@ -51,8 +53,14 @@ public class SmartPipe extends Pipe
     {
       return false;
     }
-    entityplayer.openGui( SmartPipes.instance, 0, entityplayer.getEntityWorld(), (int) entityplayer.posX, (int) entityplayer.posY, (int) entityplayer.posZ );
+    entityplayer.openGui( SmartPipes.instance, 0, entityplayer.getEntityWorld(), (int) entityplayer.posX,
+                          (int) entityplayer.posY, (int) entityplayer.posZ );
     return true;
+  }
+
+  public void setType( char type )
+  {
+    this.type = type;
   }
 
 }
