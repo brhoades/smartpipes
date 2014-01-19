@@ -1,6 +1,6 @@
 package SmartPipes.api;
 
-import SmartPipes.Base.BaseSmartPipe;
+import SmartPipes.base.BaseSmartPipe;
 import SmartPipes.SmartPipes;
 import SmartPipes.items.ItemSmartPipe;
 import SmartPipes.misc.CreativeTabSP;
