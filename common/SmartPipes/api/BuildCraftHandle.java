@@ -1,6 +1,7 @@
 package SmartPipes.api;
 
 import SmartPipes.Base.BaseSmartPipe;
+import SmartPipes.SmartPipes;
 import SmartPipes.items.ItemSmartPipe;
 import SmartPipes.misc.CreativeTabSP;
 import buildcraft.core.utils.Localization;
@@ -8,11 +9,8 @@ import buildcraft.transport.*;
 import cpw.mods.fml.relauncher.Side;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.MinecraftForgeClient;
-import SmartPipes.SmartPipes;
 
 import java.util.Map;
-
-import static buildcraft.BuildCraftTransport.buildPipe;
 
 public class BuildCraftHandle
 {
@@ -31,12 +29,12 @@ public class BuildCraftHandle
 
   public void registerPipes( Side side )
   {
-    SmartPipes.SmartPipeBase = buildPipe( SmartPipes.SmartPipeBaseID, BaseSmartPipe.class, "Smart Pipe" );
+    SmartPipes.SmartPipeBase = makePipe( SmartPipes.SmartPipeBaseID, BaseSmartPipe.class, side );
     SmartPipes.SmartPipeBase.setTextureName( "buildcraft:textures/blocks/pipeItemsGold.png" );
 
   }
 
-  public Item makePipe( int ID, Class<? extends Pipe> clas, String descr, Side side )
+  public Item makePipe( int ID, Class<? extends Pipe> clas, Side side )
   {
     Item newPipe = registerPipe( ID, clas );
     newPipe.setCreativeTab( creativeTab );
