@@ -34,13 +34,14 @@ public class GuiSmartPipe extends GuiScreen
     int buttonHeight = 20;
     int buttonWidth = 50;
 
-    int spacingFactorX = 10;
-    int spacingFactorY = 15;
+    int spacingFactorX = 5;
+    int spacingFactorY = 10;
 
     String[][] buttons = new String[][]
     {
       { "Overflow", "Crafting" },
-      { "Stock", "Storage"  }
+      { "Stock", "Storage"  },
+      { "Order", "Nothing" }
     };
 
     int buttonX = buttons.length;

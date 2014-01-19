@@ -40,11 +40,21 @@ public class SmartPipes
   public BuildCraftHandle buildCraftHandle;
   public ItemIconProvider itemIconProvider = new ItemIconProvider();
 
+  //Pipes
   public static Item SmartPipeBase;
   public static int SmartPipeBaseID = 3902;
 
+  //Blocks
   public static Block blockRecipeEncoder;
   public static int BlockRecipeEncoderID = 3901;
+
+
+  //Types
+  public static byte smartUnset    = 0x0;     //0000
+  public static byte smartOverflow = 0x1;     //0001
+  public static byte smartCrafting = 0x2;     //0010
+  public static byte smartStorage  = 0x4;     //0100
+  public static byte smartOrder    = 0x8;     //1000
 
   @Mod.EventHandler
   public void preInitialize( FMLPreInitializationEvent event )
