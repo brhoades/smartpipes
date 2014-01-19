@@ -1,14 +1,17 @@
 package SmartPipes.gui;
 
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.relauncher.Side;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
+
 import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;;
-import cpw.mods.fml.common.FMLCommonHandler;
-import net.minecraft.network.packet.Packet250CustomPayload;
+import java.io.DataOutputStream;
+
+;
 
 
 public class GuiSmartPipe extends GuiScreen
@@ -28,14 +31,47 @@ public class GuiSmartPipe extends GuiScreen
   @Override
   public void initGui()
   {
+    int buttonHeight = 20;
+    int buttonWidth = 50;
+
+    int spacingFactorX = 10;
+    int spacingFactorY = 15;
+
+    String[][] buttons = new String[][]
+    {
+      { "Overflow", "Crafting" },
+      { "Stock", "Storage"  }
+    };
+
+    int buttonX = buttons.length;
+    int buttonY = buttons[0].length;
+
+    //Calculate anticipated margins from the edges
+    //Gives us our starting positions for each row and column, tabulating spaces between and button sizes.
+    int xMargins = ( xTextureSize - (buttonX)*buttonWidth - (buttonX-1)*spacingFactorX )/2;
+    int yMargins = ( yTextureSize - (buttonY)*buttonHeight - (buttonY-1)*spacingFactorY )/2;
+
     super.initGui();
 
+    //This is done for the sake of simplification
+    //spacingFactorX += buttonWidth;
+    //spacingFactorY += buttonHeight;
+
+    //Draw centered
     xPos = ( this.width - xTextureSize ) / 2;
     yPos = ( this.height - yTextureSize ) / 2;
 
-    //id, x, y, width, height, text
-    buttonList.add( new GuiButton( 1, this.width / 2 - 25, this.height / 2, 20, 20, "-" ) );
-    buttonList.add( new GuiButton( 2, this.width / 2 + 25, this.height / 2, 20, 20, "+" ) );
+    for( int i=0; i<buttonX; i++ )
+    {
+      for( int j=0; j<buttonY; j++ )
+      {
+        int myX = xPos + xMargins + spacingFactorX*i + buttonWidth*i;
+        int myY = yPos + yMargins + spacingFactorY*j + buttonHeight*j;
+
+        //Unique ID, X, Y, button height, button width, text
+        buttonList.add( new GuiButton( (i*buttonX)+j+1, myX, myY, buttonWidth, buttonHeight, buttons[i][j] ) );
+      }
+    }
   }
 
   public void drawScreen( int par1, int par2, float par3 )
